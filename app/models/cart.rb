@@ -31,7 +31,7 @@ class Cart
   end
   
   def count
-    @items.length
+    @items.inject(0) { |sum, item| sum + item.quantity }
   end
   
   def serialize

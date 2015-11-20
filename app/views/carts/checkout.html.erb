@@ -1,0 +1,58 @@
+<h2>Checkout</h2>
+<h4>You are checking out the following products:</h4>
+<ul>
+  <% @cart.items.each do |item| %>
+    <li>
+      <em>
+        <%= item.quantity %>
+      </em>
+      <%= item.product.name %>
+      <%= number_to_currency item.total_price %>
+    </li>
+  <% end %>
+</ul>
+<p>
+  <strong>
+    Total price:
+    <%= number_to_currency @cart.total_price %>
+  </strong>
+</p>
+  <!-- using form builder to create orders form -->
+<%= form_for @order_form, url: orders_path do |f| %>
+  <%= render "orders/errors" %>
+  
+  <h4>Some of your personal details</h4>
+  <%= f.fields_for :user, f.object.user do |u| %>
+    <div class="form-group">
+      <p>
+        <%= u.text_field :name, placeholder: "Name", class: "form-control input-lg" %>
+      </p>
+      <p>
+        <%= u.text_field :email, placeholder: "Email", class: "form-control" %>
+        <span class="help-block">This will help you track your order more effectively.</span>
+      </p>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <p class="col-md-6">
+          <%= u.text_field :address, placeholder: "Address", class: "form-control" %>
+        </p>
+        <p class="col-md-3">
+          <%= u.text_field :postal_code, placeholder: "Postal code", class: "form-control" %>
+        </p>
+        <p class="col-md-3">
+          <%= u.text_field :city, placeholder: "City", class: "form-control" %>
+        </p>
+      </div>
+      <p>
+        <%= u.country_select :country, {priority_countries: [ "IE", "GB", "US" ] }, { class:"form-control"} %>
+      </p>
+      <p>
+        <%= u.text_field :phone, placeholder: "Phone", class: "form-control" %>
+      </p>
+    </div>
+    <p>
+      <%= f.submit "Place Order", class: "btn btn-primary" %>
+    </p>
+  <% end %>
+<% end %>
