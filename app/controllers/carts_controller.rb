@@ -8,6 +8,12 @@ class CartsController < ApplicationController
 	redirect_to :back, notice: "Added #{product.name} to cart"
   end
   
+  def clearCart
+    # set the session variable to nil and redirect
+	session[:cart] = nil
+	redirect_to root_path
+  end
+  
   def show
   end
   

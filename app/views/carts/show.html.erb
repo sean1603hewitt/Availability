@@ -27,5 +27,7 @@
 <p>
   <%= link_to 'Continue Shopping', :controller => :products %>
   |
+  <%=link_to "clearCart", clearCart_cart_path, class: "btn btn-primary" %>
+  |
   <%= link_to "Checkout", checkout_cart_path, class: "btn btn-primary" %>
 </p>

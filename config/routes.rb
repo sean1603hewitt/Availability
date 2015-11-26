@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show] do
   get "add", path: "add/:id"
   get :checkout
+  get :clearCart
   end
   
   resources :orders, only: [ :index, :show, :create ]
