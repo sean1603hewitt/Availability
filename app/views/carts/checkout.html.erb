@@ -7,14 +7,14 @@
         <%= item.quantity %>
       </em>
       <%= item.product.name %>
-      <%= number_to_currency item.total_price %>
+      <%= number_to_currency item.total_price, :unit => "Price: € " %>
     </li>
   <% end %>
 </ul>
 <p>
   <strong>
     Total price:
-    <%= number_to_currency @cart.total_price %>
+    <%= number_to_currency @cart.total_price, :unit => "Price: € " %>
   </strong>
 </p>
   <!-- using form builder to create orders form -->
@@ -51,8 +51,11 @@
         <%= u.text_field :phone, placeholder: "Phone", class: "form-control" %>
       </p>
     </div>
+  <% end %>  
     <p>
-      <%= f.submit "Place Order", class: "btn btn-primary" %>
+      <%= f.submit "Place order", class: "btn btn-primary" %>
     </p>
-  <% end %>
 <% end %>
+
+
+

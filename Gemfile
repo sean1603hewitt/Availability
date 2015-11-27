@@ -15,7 +15,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring',   group: :development
 
 
-
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'haml-rails'
@@ -24,6 +23,7 @@ gem 'mini_magick'
 gem 'puma'
 gem 'devise'
 gem 'country_select'
+gem "braintree"
 
 group :test do
 	gem 'minitest-rails'

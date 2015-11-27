@@ -1,7 +1,6 @@
 <h1>
   <%= @product.name %>
 </h1>
-product = Product.find params[:id]
 <p>
   <%= @product.description %>
 </p>
@@ -10,6 +9,9 @@ product = Product.find params[:id]
 </p>
 <p>
   <%= image_tag @product.image, height: "300" %>
+</p>
+<p>
+  <%= @product.category.name %>
 </p>
 <p>
   <%= link_to "Add to cart", add_cart_path, class: "btn btn-primary" %>
