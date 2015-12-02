@@ -1,0 +1,31 @@
+%h1 Listing stocks
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Availability
+      %th Recommended level
+      %th Standard order
+      %th Supplier name
+      %th Supplier email
+      %th Product Id
+
+
+  %tbody
+    - @stocks.each do |stock|
+      %tr
+        %td= stock.availability
+        %td= stock.recommended_level
+        %td= stock.standard_order
+        %td= stock.supplier_name
+        %td= stock.supplier_email
+        %td= stock.product_id
+        %td
+          = link_to 'Show', stock
+          = link_to 'Edit', edit_stock_path(stock)
+          = link_to 'Destroy', stock, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Stock', new_stock_path
+

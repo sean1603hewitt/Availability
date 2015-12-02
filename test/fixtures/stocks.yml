@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  availability: 1
+  recommended_level: 1
+  standard_order: 1
+  supplier_name: MyString
+  supplier_email: MyString
+
+two:
+  availability: 1
+  recommended_level: 1
+  standard_order: 1
+  supplier_name: MyString
+  supplier_email: MyString

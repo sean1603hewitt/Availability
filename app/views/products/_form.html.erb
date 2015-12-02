@@ -1,3 +1,4 @@
+<!-- adding multipart so form takes files to server -->
 <%= form_for @product, multipart: true do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">

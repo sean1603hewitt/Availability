@@ -1,7 +1,7 @@
 class OrderForm
   include ActiveModel::Model
   
-  attr_accessor :user, :order #credit_card
+  attr_accessor :user, :order
   attr_writer :cart
   
   def save

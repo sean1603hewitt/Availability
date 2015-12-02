@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_filter :initialize_cart
 
+
   # GET /products
   # GET /products.json
   def index
@@ -11,7 +12,10 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = Product.find(params[:id])
+	@stock = Stock.find(params[:id])
   end
+
 
   # GET /products/new
   def new
@@ -62,10 +66,11 @@ class ProductsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.includes(:stocks).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

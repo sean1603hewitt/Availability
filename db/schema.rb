@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127014107) do
+ActiveRecord::Schema.define(version: 20151202150800) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -25,10 +25,12 @@ ActiveRecord::Schema.define(version: 20151127014107) do
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "stock_id"
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
+  add_index "order_items", ["stock_id"], name: "index_order_items_on_stock_id"
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -46,9 +48,24 @@ ActiveRecord::Schema.define(version: 20151127014107) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "category_id", default: 1
+    t.integer  "stock_id"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
+  add_index "products", ["stock_id"], name: "index_products_on_stock_id"
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer  "availability"
+    t.integer  "recommended_level"
+    t.integer  "standard_order"
+    t.string   "supplier_name"
+    t.string   "supplier_email"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "product_id"
+  end
+
+  add_index "stocks", ["product_id"], name: "index_stocks_on_product_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

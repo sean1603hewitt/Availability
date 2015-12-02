@@ -1,0 +1,28 @@
+= form_for @stock do |f|
+  - if @stock.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@stock.errors.count, "error")} prohibited this stock from being saved:"
+      %ul
+        - @stock.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :availability
+    = f.number_field :availability
+  .field
+    = f.label :recommended_level
+    = f.number_field :recommended_level
+  .field
+    = f.label :standard_order
+    = f.number_field :standard_order
+  .field
+    = f.label :supplier_name
+    = f.text_field :supplier_name
+  .field
+    = f.label :supplier_email
+    = f.text_field :supplier_email
+  .field
+  = f.label :Product_id
+  = f.select :product_id, Product.all.map { |p| [ p.id ] }
+  .actions
+    = f.submit 'Save'

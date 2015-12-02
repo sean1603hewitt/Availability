@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Availability:
+  = @stock.availability
+%p
+  %b Recommended level:
+  = @stock.recommended_level
+%p
+  %b Standard order:
+  = @stock.standard_order
+%p
+  %b Supplier name:
+  = @stock.supplier_name
+%p
+  %b Supplier email:
+  = @stock.supplier_email
+%p
+  %b Product Id:
+  = @stock.product_id
+
+
+= link_to 'Edit', edit_stock_path(@stock)
+\|
+= link_to 'Back', stocks_path
