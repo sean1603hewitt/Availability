@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 	
 	if @order_form.save
 	  notify_user
-	  initialize_cart
+	  session[:cart] = nil
 	  redirect_to root_path, notice: "Thank you for ordering these products from us"
 	else
 	  render "carts/checkout"

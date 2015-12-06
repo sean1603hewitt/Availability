@@ -3,6 +3,8 @@
 <%= render "products/products_table" %>
 
 <br/>
-<p>
-  <%= link_to 'New Product', new_product_path, class: "btn btn-primary" %>
-</p>
+<% if current_user && current_user.admin? %>
+  <p>
+    <%= link_to 'New Product', new_product_path, class: "btn btn-primary" %>
+  </p>
+<% end %>

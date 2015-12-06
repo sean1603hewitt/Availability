@@ -9,8 +9,10 @@
   <% @cart.items.each do |item| %>
     <tr>
       <td>
-        <%= item.quantity %>
-      </td>
+       Items Ordered: <%= item.quantity %>
+       </br>
+        Stocks Available: <%= item.stock.availability %>
+      </td>	
       <td>
         <%= image_tag item.product.image.thumb %>
         <%= link_to item.product.name, item.product %>
@@ -26,7 +28,7 @@
   <%= (number_to_currency(@cart.total_price, options= {:unit => "€"})) %>
 </b></p>
 <p>
-  <%= link_to 'Continue Shopping', :controller => :products %>
+  <%= link_to 'Continue Shopping', products_path, class: "btn btn-primary" %>
   |
   <%=link_to "clearCart", clearCart_cart_path, class: "btn btn-primary" %>
   |

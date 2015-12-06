@@ -38,7 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {:host => 'localhost:3000' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -50,9 +50,5 @@ Rails.application.configure do
 	:authentication => "plain" ,
 	:enable_starttls_auto => true,
   }
-  
-  Braintree::Configuration.environment = :sandbox
-  Braintree::Configuration.merchant_id = "8k3zqhh5t3fcw383"
-  Braintree::Configuration.public_key = "2t9p8tcwzj6t98jy"
-  Braintree::Configuration.private_key = "4a4710b34ac341379bd02132394d72d9"
+
 end

@@ -44,8 +44,6 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
-    braintree (2.55.0)
-      builder (>= 2.0.0)
     builder (3.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -206,7 +204,6 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
-  braintree
   carrierwave
   coffee-rails (~> 4.1.0)
   country_select
@@ -214,7 +211,6 @@ DEPENDENCIES
   factory_girl_rails
   figaro
   haml-rails
-  html2haml
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

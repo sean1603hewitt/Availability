@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_filter :initialize_cart
 
   # GET /stocks
   # GET /stocks.json
@@ -64,11 +65,11 @@ class StocksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stock
-      @stock = Stock.find(params[:id])
+      @stock = Stock.includes(:orders).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:availability, :recommended_level, :standard_order, :supplier_name, :supplier_email, :product_id)
+      params.require(:stock).permit(:availability, :recommended_level, :standard_order, :supplier_name, :supplier_email, :product_id, :order_id)
     end
 end

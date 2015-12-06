@@ -4,8 +4,11 @@
   <% @cart.items.each do |item| %>
     <li>
       <em>
-        <%= item.quantity %>
+        Items Ordered: <%= item.quantity %>&nbsp
       </em>
+      <em>
+        Stocks Available: <%= item.stock.availability %>&nbsp
+      </em>	  
       <%= item.product.name %>
       <%= number_to_currency item.total_price, :unit => "Price: € " %>
     </li>
@@ -54,7 +57,9 @@
   <% end %>  
     <p>
       <%= f.submit "Place order", class: "btn btn-primary" %>
-    </p>
+      |
+	  <%= link_to 'Continue Shopping', products_path, class: "btn btn-primary" %>
+	</p>
 <% end %>
 
 

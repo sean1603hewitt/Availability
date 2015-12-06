@@ -23,14 +23,14 @@ gem 'mini_magick'
 gem 'puma'
 gem 'devise'
 gem 'country_select'
-gem "braintree"
+
 
 group :test do
 	gem 'minitest-rails'
 	gem 'factory_girl_rails'
 end
 group :development do
-	gem 'html2haml'
+#gem 'html2haml'
 end
 
 group :development, :test do
