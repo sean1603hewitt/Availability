@@ -14,7 +14,11 @@
   Category: <%= @product.category.name %>  ,Stocks Available: <%= @stock.availability %>
 </p>
 <p>
-  <%= link_to "Add to cart", add_cart_path, class: "btn btn-primary" %>
+  <% if @stock.availability != 0 && @stock.availability != nil  %>
+    <%= link_to "Add to cart", add_cart_path, class: "btn btn-primary" %>
+  <% else %>
+    <p>Sorry Out of stock</p>
+  <% end %>
 </p>
 <p>
   <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary"  %>

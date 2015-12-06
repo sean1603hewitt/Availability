@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     
 	  @order = Order.new
 	  @user = User.new(order_params[:user])
+	  @user.save
 	  @order.user = @user
 	  
 	 
@@ -18,10 +19,18 @@ class OrdersController < ApplicationController
 	    @order_item.quantity = item.quantity
 	    @order_item.order = @order
 	    @order_item.save
+	    
+	    product = Product.find(item.product)
+			
+			stock_id = product.stock.id
+			stock = Stock.find(stock_id)
+	    stock.availability = stock.availability - item.quantity
+	    stock.save
+	    
 	  end
 	
 	if @order.save
-	  notify_user
+	 # notify_user
 	  session[:cart] = nil
 	  redirect_to root_path, notice: "Thank you for ordering these products from us"
 	else
@@ -32,7 +41,7 @@ class OrdersController < ApplicationController
   private
   
   def notify_user
-	OrderMailer.order_confirmation(@order).deliver
+  	OrderMailer.order_confirmation(@order).deliver
   end
   
   def order_params
