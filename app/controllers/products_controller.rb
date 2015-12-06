@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_stock, only: [:show, :update, :destroy]
   before_filter :initialize_cart
 
 
@@ -20,6 +21,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    
   end
 
   # GET /products/1/edit
@@ -30,10 +32,14 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @stock = Stock.new
+    @stock.availability = 0
 
+    @stock.save
+    @product.stock = @stock
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to edit_stock_path(@stock.id), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -47,7 +53,8 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        @stock = @product.stock
+        format.html { redirect_to edit_stock_path(@stock.id), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -70,7 +77,11 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.includes(:stocks).find(params[:id])
+      @product = Product.find(params[:id])
+    end
+    
+    def set_stock
+      @stock = @product.stock
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

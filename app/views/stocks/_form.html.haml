@@ -21,8 +21,6 @@
   .field
     = f.label :supplier_email
     = f.text_field :supplier_email
-  .field
-  = f.label :Product_id
-  = f.select :product_id, Product.all.map { |p| [ p.id ] }
+  
   .actions
     = f.submit 'Save'

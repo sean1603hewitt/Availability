@@ -6,11 +6,21 @@ class OrdersController < ApplicationController
   end
   
   def create
-    @order_form = OrderForm.new(
-	  user: User.new(order_params[:user]),
-	  cart: @cart)
+    
+	  @order = Order.new
+	  @user = User.new(order_params[:user])
+	  @order.user = @user
+	  
+	 
+	  @cart.items.each do |item|
+	    @order_item = OrderItem.new
+	    @order_item.product = item.product
+	    @order_item.quantity = item.quantity
+	    @order_item.order = @order
+	    @order_item.save
+	  end
 	
-	if @order_form.save
+	if @order.save
 	  notify_user
 	  session[:cart] = nil
 	  redirect_to root_path, notice: "Thank you for ordering these products from us"
@@ -22,7 +32,7 @@ class OrdersController < ApplicationController
   private
   
   def notify_user
-	OrderMailer.order_confirmation(@order_form.order).deliver
+	OrderMailer.order_confirmation(@order).deliver
   end
   
   def order_params

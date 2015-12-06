@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   validates_numericality_of :price
   
   belongs_to :category
-  has_many :stocks
+  has_one :stock
   
   attr_accessor :availablity
   def availablity
