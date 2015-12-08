@@ -22,10 +22,10 @@ class OrderForm
   end
   
   
-  def build_order_items
-    @cart.items.each do |item|
-      @order.order_items.create! product_id: item.product_id, quantity: item.quantity
-	end
+  #def build_order_items
+   # @cart.items.each do |item|
+    #  @order.order_items.create! product_id: item.product_id, quantity: item.quantity
+	#end
   end
   
 

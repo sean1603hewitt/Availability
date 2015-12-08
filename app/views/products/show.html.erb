@@ -16,6 +16,8 @@
 <p>
   <% if @stock.availability != 0 && @stock.availability != nil  %>
     <%= link_to "Add to cart", add_cart_path, class: "btn btn-primary" %>
+	|
+	<%= link_to "Go to Cart", cart_path, class: "btn btn-primary" %>
   <% else %>
     <p>Sorry Out of stock</p>
   <% end %>

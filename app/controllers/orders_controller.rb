@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 	  end
 	
 	if @order.save
-	 # notify_user
+	  #notify_user
 	  session[:cart] = nil
 	  redirect_to root_path, notice: "Thank you for ordering these products from us"
 	else
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   private
   
   def notify_user
-  	OrderMailer.order_confirmation(@order).deliver
+  	OrderMailer.order_confirmation(@order_form).deliver
   end
   
   def order_params
