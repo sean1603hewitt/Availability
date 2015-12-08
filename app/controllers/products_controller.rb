@@ -53,7 +53,9 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        @stock = @product.stock
+        #adding redirect to stock updates for convenience
+		
+		@stock = @product.stock
         format.html { redirect_to edit_stock_path(@stock.id), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else

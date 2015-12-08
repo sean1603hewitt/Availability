@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   has_one :stock
   
   attr_accessor :availablity
+  
   def availablity
   @product.availablity = @Stock.availablity
   end
