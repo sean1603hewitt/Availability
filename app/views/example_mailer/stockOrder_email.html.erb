@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @stock.supplier_name %></h1>
+    <p>
+      please send to us the stocks below on the next available delivery date
+    </p>
+	<p>
+	<%= @stock.supplier_email.each do |s| %>
+     * Stock Identity;<%= stock.id %>, the amount of <%= stock.standard_order%> of <%= product.name %>
+    <%= end %>
+	</p>
+    <p>Thank you.</p></br>
+    <p>Kind Regards,</p></br>
+    <p>Example Furniture.</p>
+
+  </body>
+</html>

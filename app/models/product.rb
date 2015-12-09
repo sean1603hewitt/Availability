@@ -6,11 +6,5 @@ class Product < ActiveRecord::Base
   
   belongs_to :category
   has_one :stock
-  
-  attr_accessor :availablity
-  
-  def availablity
-  @product.availablity = @Stock.availablity
-  end
 
 end

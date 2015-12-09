@@ -1,4 +1,5 @@
 class CartItem
+#class to hold product_id and quantity
   attr_reader :product_id, :quantity
   
   def initialize product_id, quantity = 1
