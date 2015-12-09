@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
 	
 	if @order.save
 	  @user.save
-      check_stock
-	  notify_user
+      #check_stock
+	  #notify_user
 	  session[:cart] = nil
 	  redirect_to root_path, notice: "Thank you for ordering these products from us"
 	else
