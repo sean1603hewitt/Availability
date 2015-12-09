@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   
   def index
     @orders = Order.order(created_at: :desc).all
+	@user = User.find(order_params[:user])
   end
   
   def create
@@ -30,7 +31,9 @@ class OrdersController < ApplicationController
 	  end
 	
 	if @order.save
-	  #notify_user
+	  @user.save
+      check_stock
+	  notify_user
 	  session[:cart] = nil
 	  redirect_to root_path, notice: "Thank you for ordering these products from us"
 	else
@@ -38,14 +41,26 @@ class OrdersController < ApplicationController
 	end
   end
   
+  def check_stock 
+    product = Product.all
+	stock = Stock.all
+	
+	@stocks.each do |stock|
+      if stock.availability <= stock.recommended_level
+        ExampleMailer.stockOrder_email(@stock).deliver
+      else
+      end
+	end
+  end
+  
   private
   
   def notify_user
-  	OrderMailer.order_confirmation(@order_form).deliver
+  	OrderMailer.order_confirmation(@order_form.order).deliver
   end
   
   def order_params
-    params.require(:order_form).permit(
+    params.permit(
 	  user: [ :name, :email, :address, :postal_code, :city, :country, :phone ]
 	)
   end

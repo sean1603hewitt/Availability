@@ -1,0 +1,10 @@
+Hi <%= @stock.supplier_name %>
+please send to us the stocks below on the next available delivery date
+
+	<%= @stock.supplier_email.each do |item| %>
+     * Stock Identity;<%= stock.id %>, stock name; <%= item.product.name %>, the amount of <%= stock.standard_order%> of <%= stock.product.name %>
+    <%= end %>
+	
+  Thank you.
+  Kind Regards,
+  Example Furniture.

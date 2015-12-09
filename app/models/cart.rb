@@ -25,12 +25,14 @@ class Cart
     item = @items.find { |item| item.product_id == product_id }
   # is there is already an item there increment otherwise add a new item
 	if item
+	#if there is an item with this product id then we will increment this items quantity,
+	#calling the increment method from cart_item.rb. If not we will just add the item to the cart.
 	  item.increment
 	else
 	  @items << CartItem.new(product_id)
 	end
   end
-  
+  #since items is an array, we can use the empty method
   def empty?
     @items.empty?
   end
@@ -41,6 +43,8 @@ class Cart
   # to build a list of items in an array
   #serialize contents of entire cart into a hash
   def serialize
+  #serialize contents of entire cart into a hash
+  #item picks up on the items instance variable
   #take an item which will be used to create a brand new hash which will contain
   #two strings product_id and quantity
     items = @items.map do |item|

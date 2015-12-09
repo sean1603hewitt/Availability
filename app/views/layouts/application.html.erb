@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>FurnitureStore</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <html>
+    <head>
+      <title>FurnitureStore</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 
-  <%= csrf_meta_tags %>
-</head>
-<body>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
 
-<%= render "nav" %>
-<div class='container'>
-  <%= content_tag :div, notice, class: "bg-success" %>
-  <%= content_tag :div, alert, class: "bg-danger" %>
-  <%= yield %>
-</div>
-</body>
-</html>
+    <%= render "nav" %>
+    <div class='container'>
+      <%= content_tag :div, notice, class: "bg-success" %>
+      <%= content_tag :div, alert, class: "bg-danger" %>
+      <%= yield %>
+    </div>
+    <div id='footer'>
+      <h6 class="footertext">&copy; HDSMT Software Project : Seán Hewitt : x14124793 HDCLOUDJAN; 2015</h6>
+    </div>
+    </body>
+  </html>
