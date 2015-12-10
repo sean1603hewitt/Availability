@@ -6,6 +6,5 @@ class Product < ActiveRecord::Base
   
   belongs_to :category
   has_one :stock
-  belongs_to :stock
 
 end
